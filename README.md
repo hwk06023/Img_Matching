@@ -8,12 +8,12 @@ The final goal is process on real-time & Incremental the image to recognize <br/
 
 ## Matching Template - opencv
 
-Use opencv's 'cv2.matchTemplate', get loc, normalize .. <br/>
+Use opencv's matchTemplate, get loc, normalize .. <br/>
 
 Check [template_matching.py](https://github.com/hwk06023/Img_Recognition/blob/main/template_matching.py)
 <br/>
 
-![Match template](img/matchTemp.png)
+![Match template](readme/matchTemp.png)
 
 Size, rotational transformations do not work well, and slow
 
