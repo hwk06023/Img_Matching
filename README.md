@@ -45,9 +45,10 @@ Um .. I think because my skin color is similar to the background color. <br/>
 ## Augmetation+ Few shot learning
 
 An attempt to improve performance in one-shot learning <br/>
+I make use of [paperwithcode's git](https://paperswithcode.com/paper/prototypical-networks-for-few-shot-learning)
 
 #### An attempt (Update)
-Metric based learning - Prototypical Network, Relation Network, .. <br/>
+Metric based learning - [Prototypical Network](https://proceedings.neurips.cc/paper_files/paper/2017/file/cb8da6767461f2812ae4290eac7cbc42-Paper.pdf), Relation Network, .. <br/>
 Model based learning - .. <br/>
 Optimizer learning - .. <br/>
 <br/>
