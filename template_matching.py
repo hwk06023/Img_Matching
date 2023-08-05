@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-img_path = 
-template_path = 
+img_path = 'img/lab_img1.jpg'
+template_path = 'img/lab_img2.jpg'
 
 img = cv2.imread(img_path)
 template = cv2.imread(template_path)
