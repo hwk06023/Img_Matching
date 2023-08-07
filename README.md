@@ -4,7 +4,9 @@
 
 Recognize the image from the image to determine if it exists. <br/>
 It presents a variety of methodologies for this <br/>
-The final goal is process on real-time & Incremental the image to recognize <br/><br/>
+The final goal is process on real-time & Incremental the image to recognize <br/>
+
+I record various attempts in this repo <br/><br/>
 
 ## Matching Template - opencv
 
@@ -15,14 +17,30 @@ Check [template_matching.py](https://github.com/hwk06023/Img_Recognition/blob/ma
 
 ![Match template](readme/matchTemp.png)
 
-Size, rotational transformations do not work well, and slow
-
+In this case, performance is nice, <br/>
+But, size or rotational transformations do not work well, and slow
 
 <br/>
 
-## One shot learning (CLIPSeg ..)
+
+## One shot learning
 
 An attempt to overcome the vulnerability of the real world <br/>
+
+- [Siamese Neural Networks](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf)
+- [CLIPSeg](https://arxiv.org/pdf/2103.00020.pdf)
+
+###  Siamese Neural Networks (Conv)
+
+I use [Huggingface](https://huggingface.co/keras-io/siamese-contrastive), [keras.io](https://keras.io/examples/vision/siamese_contrastive/). <br/>
+
+[Siamese_net](siamese_net.ipynb) <br/>
+
+um.. I miss. useless <br/>
+
+
+### CLIPSeg
+
 I use [Huggingface](https://huggingface.co/blog/clipseg-zero-shot). <br/>
 
 ![clipseg](readme/clipseg.png) <br/>
@@ -42,20 +60,22 @@ Um .. I think because my skin color is similar to the background color. <br/>
 
 <br/>
 
-## Augmetation+ Few shot learning
+## Augmetation + Few shot learning
 
 An attempt to improve performance in one-shot learning <br/>
 I make use of [paperwithcode's git](https://paperswithcode.com/paper/prototypical-networks-for-few-shot-learning)
 
 #### An attempt (Update)
-Metric based learning - [Prototypical Network](https://proceedings.neurips.cc/paper_files/paper/2017/file/cb8da6767461f2812ae4290eac7cbc42-Paper.pdf), Relation Network, .. <br/>
-Model based learning - .. <br/>
-Optimizer learning - .. <br/>
+- Metric based learning - [Prototypical Network](https://proceedings.neurips.cc/paper_files/paper/2017/file/cb8da6767461f2812ae4290eac7cbc42-Paper.pdf), Relation Network, .. <br/>
+- Model based learning - .. <br/>
+- Optimizer learning - .. <br/>
 <br/>
 
 ### Augemtation
 
+Flipping, Gray scale, Brightness, Rotation ..
 
+Based [this Repo](https://github.com/hwk06023/Augmentation)
 
 
 ### Prototypical Network
@@ -69,6 +89,8 @@ Optimizer learning - .. <br/>
 
 ## + Continual learning
 
-Contilnual learning is required because the task to be processed is constantly updated. <br/>
+Continual learning is required because the task to be processed is constantly updated. <br/>
 
-So, {n-way, n+1-way, n+2-way, ...} lol <br/>
+Based [this Repo](https://github.com/hwk06023/Continual-Learning)
+
+So, {n-way, n+1-way, n+2-way, ...} ? lol <br/>
