@@ -8,6 +8,18 @@ The final goal is process on real-time & Incremental the image to recognize <br/
 
 I record various attempts in this repo <br/><br/>
 
+## Feature Detection & Matching - opencv
+
+Use SIFT, SURF, ORB, FAST, BRISK, AKAZE .. <br/>
+[Comparative analysis](https://ieeexplore.ieee.org/document/8346440)
+
+If feature is simple, use FAST, BRISK .. <br/>
+else(complex), SIFT, SURF, AKAZE .. <br/>
+
+Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
+
+![fea_detmat](readme/Fea_DetectMat.png)
+
 ## Matching Template - opencv
 
 Use opencv's matchTemplate, get loc, normalize .. <br/>
