@@ -13,7 +13,7 @@ I record various attempts in this repo <br/><br/>
 Use SIFT, SURF, ORB, FAST, BRISK, AKAZE .. <br/>
 [Comparative analysis](https://ieeexplore.ieee.org/document/8346440)
 
-If feature is simple, use FAST, BRISK .. <br/>
+If features are simple, use FAST, BRISK .. <br/>
 else(complex), SIFT, SURF, AKAZE .. <br/>
 
 Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
