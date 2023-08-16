@@ -1,7 +1,7 @@
 import cv2
 
-img1 = cv2.imread('./img/lab_img1.jpg')
-img2 = cv2.imread('./img/lab_img2.jpg')
+img1 = cv2.imread('./img/navi_img.jpeg')
+img2 = cv2.imread('./img/navi_temp1.png')
 
 using_FAST = False
 

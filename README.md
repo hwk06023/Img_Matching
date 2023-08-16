@@ -20,6 +20,12 @@ Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
 
 ![fea_detmat](readme/Fea_DetectMat.png)
 
+In Smart_Camera(Navigation) project,
+
+![fe2](readme/navi_readme1.png)
+
+![fe3](readme/navi_readme2.png)
+
 ## Matching Template - opencv
 
 Use opencv's matchTemplate, get loc, normalize .. <br/>
@@ -29,8 +35,10 @@ Check [template_matching.py](https://github.com/hwk06023/Img_Recognition/blob/ma
 
 ![Match template](readme/matchTemp.png)
 
-In this case, performance is nice, <br/>
-But, size or rotational transformations do not work well, and slow
+In this case, performance is nice. <br/>
+But, It doesn't work well in Smart_Camera(Navigation). <br/>
+Furthermore, size or rotational transformations do not work well, and slow. <br/>
+
 
 <br/>
 
