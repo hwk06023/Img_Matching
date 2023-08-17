@@ -29,6 +29,10 @@ In Smart_Camera(Navigation) project,
 This project is demanded working robustly(whether a small image is rotated, moved, or changed in brightness) <br/>
 So, I'm doing middle processing to boolean the result from feature detection & matching. <br/>
 
+### Homography
+
+### BFmatching
+
 ## Matching Template - opencv
 
 Use opencv's matchTemplate, get loc, normalize .. <br/>
@@ -117,6 +121,6 @@ Based [this Repo](https://github.com/hwk06023/Augmentation)
 
 Continual learning is required because the task to be processed is constantly updated. <br/>
 
-Based [this Repo](https://github.com/hwk06023/Continual-Learning)
+Based [this Repo](https://github.com/hwk06023/Continual-Learning) <br/>
 
-So, {n-way, n+1-way, n+2-way, ...} ? lol <br/>
+So, { n-way, n+1-way, n+2-way, ... }
