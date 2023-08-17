@@ -14,7 +14,7 @@ Use SIFT, SURF, ORB, FAST, BRISK, AKAZE .. <br/>
 [Comparative analysis](https://ieeexplore.ieee.org/document/8346440)
 
 If features are simple, use FAST, BRISK .. <br/>
-else(complex), SIFT, SURF, AKAZE .. <br/>
+else(complex), use SIFT, SURF, AKAZE .. <br/>
 
 Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
 
@@ -22,9 +22,12 @@ Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
 
 In Smart_Camera(Navigation) project,
 
-![fe2](readme/navi_readme1.png)
+![fe2](readme/navi_feat1.png)
 
-![fe3](readme/navi_readme2.png)
+![fe3](readme/navi_feat2.png)
+
+This project is demanded working robustly(whether a small image is rotated, moved, or changed in brightness) <br/>
+So, I'm doing middle processing to boolean the result from feature detection & matching. <br/>
 
 ## Matching Template - opencv
 
@@ -35,9 +38,12 @@ Check [template_matching.py](https://github.com/hwk06023/Img_Recognition/blob/ma
 
 ![Match template](readme/matchTemp.png)
 
-In this case, performance is nice. <br/>
-But, It doesn't work well in Smart_Camera(Navigation). <br/>
-Furthermore, size or rotational transformations do not work well, and slow. <br/>
+![template navi](readme/navi_template.png)
+
+
+In this case, performance is very nice. <br/>
+But, size or rotational transformations do not work well, and slow. <br/>
+So, I can't use it <br/>
 
 
 <br/>
