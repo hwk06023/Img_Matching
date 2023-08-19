@@ -1,10 +1,10 @@
 import cv2
 
-image1 = cv2.imread('', cv2.IMREAD_GRAYSCALE)
-image2 = cv2.imread('', cv2.IMREAD_GRAYSCALE)
+image1 = cv2.imread('navi2_img.png', cv2.IMREAD_GRAYSCALE)
+image2 = cv2.imread('detected2_3.png', cv2.IMREAD_GRAYSCALE)
 flag = 0
 
-orb = cv2.ORB_create()
+orb = cv2.SIFT_create()
 
 keypoints1, descriptors1 = orb.detectAndCompute(image1, None)
 keypoints2, descriptors2 = orb.detectAndCompute(image2, None)
