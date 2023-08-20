@@ -63,8 +63,13 @@ I think if i use this one, my app work robustly. <br/>
 ![wiki_homogr.png](readme/wiki_homogr.png) <br/>
 
 As far as, I know homography works for planar objects <br/>
-So, I use before, detect planar objects in small image <br/>
+So, I use before, detect planar objects in small image <br/> <br/>
 
+Ratio = 0.6, Good matches:122/53093
+![ratio_0.5](readme/ratio_0.6.png)
+
+Ratio = 0.5, Good matches:20/53093
+![ratio_0.5](readme/ratio_0.5.png)
 
 Check [Homography.py](Homography.py)
 
@@ -73,13 +78,15 @@ Check [Homography.py](Homography.py)
 
 solvePnP is
 
-### BFmatching
+#### BFmatching
 
 BFmatching is BruteForce matching. <br/>
 I get the boolean result by using BFmatching <br/>
 
 If Length of matching >= threshold is True <br/>
 else(Length of matching < threshold), False. <br/>
+
+I used BFmatching even though I could use FLANN because accuracy is more important than speed. <br/>
 
 Check [BFmatching.py](BFmatching.py)
 
@@ -90,6 +97,7 @@ Based on the above contents, I would like to write it as a program <br/>
 ![scenarios](readme/pipeline_hand.png)
 
 Check
+
 
 ## One shot learning
 
