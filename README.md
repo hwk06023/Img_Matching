@@ -63,7 +63,17 @@ I think if i use this one, my app work robustly. <br/>
 ![wiki_homogr.png](readme/wiki_homogr.png) <br/>
 
 As far as, I know homography works for planar objects <br/>
-So, I use before, detect planar objects in small image <br/> <br/>
+So, I use before, detect planar objects() .. in small image <br/> <br/>
+
+#### How can I detect ?
+
+Maybe, I can use Clipseg, which will be shown below
+
+![clipseg_shopsign.png](readme/clipseg_shopsign.png) <br/>
+
+#### Result
+
+So.. If I get detected shop_sign image, I could see the good performance by using homography <br/>
 
 Ratio = 0.6, Good matches:122/53093
 ![ratio_0.5](readme/ratio_0.6.png)
@@ -73,6 +83,8 @@ Ratio = 0.5, Good matches:20/53093
 
 Check [Homography.py](Homography.py)
 
+
+### ETC ..
 
 #### solvePnP
 
@@ -86,7 +98,7 @@ I get the boolean result by using BFmatching <br/>
 If Length of matching >= threshold is True <br/>
 else(Length of matching < threshold), False. <br/>
 
-I used BFmatching even though I could use FLANN because accuracy is more important than speed. <br/>
+I used BFmatching even though I could use FLANN because accuracy is more important than speed. (I am using SIFT, not ORB for a similar reason.) <br/>
 
 Check [BFmatching.py](BFmatching.py)
 
@@ -173,9 +185,9 @@ So, { n-way, n+1-way, n+2-way, ... }
 
 
 #### reference
-https://en.wikipedia.org/wiki/Homography
-https://ieeexplore.ieee.org/document/8346440
-https://arxiv.org/pdf/2103.00020.pdf
-https://paperswithcode.com/paper/prototypical-networks-for-few-shot-learning
-https://proceedings.neurips.cc/paper_files/paper/2017/file/cb8da6767461f2812ae4290eac7cbc42-Paper.pdf
-https://keras.io/examples/vision/siamese_contrastive
+https://en.wikipedia.org/wiki/Homography  <br/>
+https://ieeexplore.ieee.org/document/8346440  <br/>
+https://arxiv.org/pdf/2103.00020.pdf  <br/>
+https://paperswithcode.com/paper/prototypical-networks-for-few-shot-learning  <br/>
+https://proceedings.neurips.cc/paper_files/paper/2017/filecb8da6767461f2812ae4290eac7cbc42-Paper.pdf  <br/>
+https://keras.io/examples/vision/siamese_contrastive  <br/>
