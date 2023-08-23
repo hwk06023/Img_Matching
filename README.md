@@ -7,7 +7,7 @@ Images that are part of an image may have been rotated, moved, or changed in bri
 It presents a variety of methodologies for this <br/>
 The final goal is process on real-time & Incremental the image to recognize <br/>
 
-I record various attempts in this repo <br/><br/>
+I record various attempts in this repo <br/><br/><br/><br/>
 
 ## Matching Template - opencv
 
@@ -24,7 +24,7 @@ In Smart_Camera(Navigation) project [ Easy case ],
 
 In this case, performance is very nice. <br/>
 But, size or rotational transformations (hard cases) do not work well, and slow. <br/>
-So, I can't use it <br/>
+So, I can't use it <br/><br/><br/><br/><br/><br/>
 
 
 <br/>
@@ -54,16 +54,16 @@ In Smart_Camera(Navigation) project [ Hard case ],
 This case's performance is not good yet.. <br/><br/>
 
 This project is demanded working robustly(whether a small image is rotated, moved, or changed in brightness) <br/>
-So, I'm doing middle processing to boolean the result from feature detection & matching. <br/>
+So, I'm doing middle processing to boolean the result from feature detection & matching. <br/><br/><br/>
 
-### Homography
+## Homography (A part of Feature Matching)
 
 I think if i use this one, my app work robustly. <br/>
 
 ![wiki_homogr.png](readme/wiki_homogr.png) <br/>
 
 As far as, I know homography works for planar objects <br/>
-So, I use before, detect planar objects() .. in small image <br/> <br/>
+So, I use before, detect planar objects() .. in small image 
 
 #### How can I detect ?
 
@@ -71,17 +71,32 @@ Maybe, I can use Clipseg, which will be shown below
 
 ![clipseg_shopsign.png](readme/clipseg_shopsign.png) <br/>
 
-#### Result
+### Result
 
-So.. If I get detected shop_sign image, I could see the good performance by using homography <br/>
+So.. If I get detected shop_sign image, I could see the good performance by using homography <br/><br/>
+
+#### First shop_sign
 
 Ratio = 0.6, Good matches:122/53093
-![ratio_0.5](readme/ratio_0.6.png)
+![ratio_0.6](readme/ratio_0.6.png)
 
 Ratio = 0.5, Good matches:20/53093
 ![ratio_0.5](readme/ratio_0.5.png)
 
-Check [Homography.py](Homography.py)
+<br/>
+
+#### Second shop_sign 
+
+Ratio = 0.6, good matches:67/53093
+![ratio2_0.6](readme/ratio2_0.6.png)
+
+Ratio = 0.5, Good matches:20/53093
+![ratio2_0.5](readme/ratio2_0.5.png)
+
+Check [Homography.py](Homography.py) <br/><br/><br/>
+
+
+Based on the above figures, the matching results were good when ratio = 0.5. <br/>
 
 
 ### ETC ..
@@ -100,7 +115,8 @@ else(Length of matching < threshold), False. <br/>
 
 I used BFmatching even though I could use FLANN because accuracy is more important than speed. (I am using SIFT, not ORB for a similar reason.) <br/>
 
-Check [BFmatching.py](BFmatching.py)
+Check [BFmatching.py](BFmatching.py) <br/><br/><br/><br/><br/>
+
 
 ## Program Scenarios (Feature Matching)
 
@@ -108,7 +124,7 @@ Based on the above contents, I would like to write it as a program <br/>
 
 ![scenarios](readme/pipeline_hand.png)
 
-Check
+Check <br/><br/><br/><br/><br/>
 
 
 ## One shot learning
@@ -146,7 +162,7 @@ But, On the one-shot learning, The two pictures are about me with different back
 
 Um .. I think because my skin color is similar to the background color. <br/>
 
-<br/>
+<br/><br/><br/>
 
 ## Augmetation + Few shot learning
 
@@ -174,6 +190,7 @@ Based [this Repo](https://github.com/hwk06023/Augmentation)
 ### Relation Network
 
 
+<br/><br/><br/><br/><br/>
 
 ## + Continual learning
 

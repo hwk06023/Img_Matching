@@ -2,11 +2,12 @@ import cv2
 import numpy as np
 
 img1 = cv2.imread('img/navi2_img.png')
-img2 = cv2.imread('img/detected2_3.png')
+img2 = cv2.imread('img/detected2_4.png')
 gray1 = cv2.cvtColor(img1, cv2.IMREAD_GRAYSCALE)
 gray2 = cv2.cvtColor(img2, cv2.IMREAD_GRAYSCALE)
 
 detector = cv2.SIFT_create()
+
 kp1, desc1 = detector.detectAndCompute(gray1, None)
 kp2, desc2 = detector.detectAndCompute(gray2, None)
 
