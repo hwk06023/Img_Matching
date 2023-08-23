@@ -113,7 +113,7 @@ I get the boolean result by using BFmatching <br/>
 If Length of matching >= threshold is True <br/>
 else(Length of matching < threshold), False. <br/>
 
-I used BFmatching even though I could use FLANN because accuracy is more important than speed. (I am using SIFT, not ORB for a similar reason.) <br/>
+I used BFmatching even when I could use FLANN because in our case accuracy is more important than speed. (I am using SIFT, not ORB for the similar reason.) <br/>
 
 Check [BFmatching.py](BFmatching.py) <br/><br/><br/><br/><br/>
 
