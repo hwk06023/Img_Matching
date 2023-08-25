@@ -97,10 +97,10 @@ Ratio = 0.5, Good matches:20/53093
 
 #### 3. Iris (False data)
 
-Ratio = 0.6, good matches:67/53093
+Ratio = 0.6, good matches:13/53093
 ![ratio2_0.6](readme/Iris_0.6.png)
 
-Ratio = 0.5, Good matches:20/53093
+Ratio = 0.5, Good matches:0/53093
 ![ratio2_0.5](readme/Iris_0.5.png)
 
 <br/>
