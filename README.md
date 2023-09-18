@@ -135,18 +135,7 @@ Based on the above contents, I would like to write it as a program <br/>
 
 ![scenarios](readme/pipeline_hand.png)
 
-Check 
-
-
-
-
-
-
-
-
-
-
-
+Step 2, 
 
 
 <br/><br/><br/><br/><br/>
@@ -188,6 +177,29 @@ Um .. I think because my skin color is similar to the background color. <br/>
 
 <br/><br/><br/>
 
+
+***
+
+<br/>
+
+## In Videos
+
+
+
+
+
+
+
+
+
+
+<br/><br/>
+
+***
+
+<br/><br/><br/><br/><br/>
+
+
 ## Augmetation + Few shot learning
 
 An attempt to improve performance in one-shot learning <br/>
@@ -214,7 +226,10 @@ Based [this Repo](https://github.com/hwk06023/Augmentation)
 ### Relation Network
 
 
+
+
 <br/><br/><br/><br/><br/>
+
 
 ## + Continual learning
 
