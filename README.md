@@ -135,8 +135,21 @@ Based on the above contents, I would like to write it as a program <br/>
 
 ![scenarios](readme/pipeline_hand.png)
 
-Check <br/><br/><br/><br/><br/>
+Check 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<br/><br/><br/><br/><br/>
 
 ## One shot learning
 
