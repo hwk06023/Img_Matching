@@ -16,15 +16,13 @@ Use opencv's matchTemplate, get loc, normalize .. <br/>
 Check [template_matching.py](https://github.com/hwk06023/Img_Recognition/blob/main/template_matching.py)
 <br/>
 
-![Match template](readme/matchTemp.png)
-
 In Smart_Camera(Navigation) project [ Easy case ], 
 ![template navi](readme/navi_template.png)
 
 
 In this case, performance is very nice. <br/>
 But, size or rotational transformations (hard cases) do not work well, and slow. <br/>
-So, I can't use it <br/><br/><br/><br/><br/><br/>
+So, I can't use it <br/><br/><br/><br/>
 
 
 <br/>
@@ -128,18 +126,6 @@ I used BFmatching even when I could use FLANN because in our case accuracy is mo
 
 Check [BFmatching.py](BFmatching.py) <br/><br/><br/><br/><br/>
 
-
-## Program Scenarios (Feature Matching)
-
-Based on the above contents, I would like to write it as a program <br/>
-
-![scenarios](readme/pipeline_hand.png)
-
-Step 2, 
-
-
-<br/><br/><br/><br/><br/>
-
 ## One shot learning
 
 An attempt to overcome the vulnerability of the real world <br/>
@@ -175,30 +161,56 @@ But, On the one-shot learning, The two pictures are about me with different back
 
 Um .. I think because my skin color is similar to the background color. <br/>
 
-<br/><br/><br/>
-
+<br/><br/><br/><br/><br/><br/>
 
 ***
 
-<br/>
-
-## In Videos
+# In Videos
 
 
+## Program Scenarios (Feature Matching)
+
+Based on the above contents, I would like to write it as a program <br/>
+
+![scenarios](readme/pipeline_hand.png)
+
+
+### In the image above, Recorrection
+
+In Step 2 : Detected Image doesn't detected in small image, -> Detected by big image(point image)
+
+<br/><br/>
+
+## Test Result
+
+### Case 1 : Between Hanyang Univ & Wangsimni Station
+
+#### Point
 
 
 
 
 
 
+
+## Supplementation
+
+In my test above, Point image is not a wide(panorama, 360 ..) image. <br/>
+I'll check performance in additional test (Point image is wide image) <br/>
+
+When points are a lot, Maybe This app doesn't work well enough on real-time. <br/>
+
+
+I want to test with various processing techniques as well as CLIPSeg. (I want to see a change in performancd according to preprocessing) <br/>
 
 
 <br/><br/>
 
 ***
 
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
+# Optional processing
 
 ## Augmetation + Few shot learning
 
@@ -228,7 +240,10 @@ Based [this Repo](https://github.com/hwk06023/Augmentation)
 
 
 
-<br/><br/><br/><br/><br/>
+
+
+
+<br/><br/><br/>
 
 
 ## + Continual learning
