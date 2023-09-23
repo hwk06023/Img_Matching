@@ -185,9 +185,11 @@ In Step 2 : Detected Image doesn't detected in small image, -> Detected by big i
 
 ### Case 1 : Between Hanyang Univ & Wangsimni Station
 
-#### Point
+#### Points
 
+![points](readme/readme_points.png)
 
+#### Test_Video
 
 
 
