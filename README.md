@@ -197,11 +197,17 @@ In Step 2 : Detected Image doesn't detected in small image, -> Detected by big i
 
 ## Supplementation
 
+### Applied
+
+#### Resize (speed)
+Which kind of interpolation best for resizing image
+
+### Not yet
+
 In my test above, Point image is not a wide(panorama, 360 ..) image. <br/>
 I'll check performance in additional test (Point image is wide image) <br/>
 
 When points are a lot, Maybe This app doesn't work well enough on real-time. <br/>
-
 
 I want to test with various processing techniques as well as CLIPSeg. (I want to see a change in performancd according to preprocessing) <br/>
 
