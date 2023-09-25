@@ -191,9 +191,16 @@ In Step 2 : Detected Image doesn't detected in small image, -> Detected by big i
 
 #### Test_Video
 
+Only used two points temporarily.
+
+![result_video](readme/demo_videos.gif)
 
 
+#### In terminal
 
+![In_terminal](readme/test_result_terminal.gif)
+
+<br/><br/>
 
 ## Supplementation
 

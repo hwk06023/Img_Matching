@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 # I'll use list for point_img and good_matches
 # After 4 point, you can add more point
 
-point_img1 = cv2.imread('Video_APP/img/point1_1.png', cv2.IMREAD_GRAYSCALE)
-point_img2 = cv2.imread('Video_APP/img/point2_1.png', cv2.IMREAD_GRAYSCALE)
+point_img1 = cv2.imread('Video_APP/img/point_1.png', cv2.IMREAD_GRAYSCALE)
+point_img2 = cv2.imread('Video_APP/img/point_2.png', cv2.IMREAD_GRAYSCALE)
 # point_img3 = cv2.imread('Video_APP/img/point3_1.png', cv2.IMREAD_GRAYSCALE)
 # point_img4 = cv2.imread('Video_APP/img/point_4.png', cv2.IMREAD_GRAYSCALE)
 
@@ -73,7 +73,7 @@ while True:
     # matches4 = bf.knnMatch(des, des4, k=2) 
 
     good_matches = []
-    ratio = 0.5
+    ratio = 0.6
     good_matches.append(list(first for first,second in matches1 \
                     if first.distance < second.distance * ratio))
     
