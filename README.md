@@ -223,6 +223,15 @@ I want to test with various processing techniques as well as CLIPSeg. (I want to
 
 ***
 
+# In Real-Time
+
+## Test Result
+
+
+<br/><br/>
+
+***
+
 <br/><br/><br/><br/><br/><br/>
 
 # Optional processing
