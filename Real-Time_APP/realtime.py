@@ -20,12 +20,12 @@ matching_sound.set_volume(0.5)
 point_img1 = cv2.imread('Video_APP/img/point_1.png', cv2.IMREAD_GRAYSCALE)
 point_img2 = cv2.imread('Video_APP/img/point_2.png', cv2.IMREAD_GRAYSCALE)
 
-resize_frame_size = 256
-query_img_width = 256
+resize_frame_size = 512
+query_img_width = 512
 
 h, w = point_img1.shape
 point_img1 = cv2.resize(point_img1, (query_img_width, query_img_width * h // w))
-max_height = max(256, query_img_width * h // w)
+max_height = max(512, query_img_width * h // w)
 h, w = point_img2.shape
 point_img2 = cv2.resize(point_img2, (query_img_width, query_img_width * h // w))
 max_height = max(max_height, query_img_width * h // w)
@@ -40,6 +40,9 @@ if not video.isOpened():
     exit(0)
 
 video_size = (max_height, resize_frame_size+query_img_width)
+
+video.set(cv2.CAP_PROP_FRAME_WIDTH, video_size[0])
+video.set(cv2.CAP_PROP_FRAME_HEIGHT, video_size[1])
 
 fps = video.get(cv2.CAP_PROP_FPS)
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -85,7 +88,12 @@ while True:
         print('Cannot find Homography')
         frame = np.pad(frame, [(0, video_size[0]-resize_frame_size), (0, video_size[1]-resize_frame_size)], mode='constant')
         frame = cv2.cvtColor(frame,cv2.COLOR_GRAY2RGB)
-        out.write(np.array(frame).reshape(frame.shape[0], frame.shape[1] , 3))
+        out_frame = np.array(frame).reshape(frame.shape[0], frame.shape[1] , 3)
+        cv2.imshow("Video_Frame", out_frame)
+        cv2.waitKey(1)
+        cv2.destroyAllWindows()
+
+        out.write(out_frame)
         continue
     
     else:
@@ -134,6 +142,10 @@ while True:
         if (video_size[0]-h) * (video_size[1]-w) != 0:
           res = np.pad(res, [(0, video_size[0]-h), (0, video_size[1]-w)], mode='constant')
         out.write(np.array(res).reshape(res.shape[0], res.shape[1], 3))
+
+        cv2.imshow(np.array(frame).reshape(frame.shape[0], frame.shape[1] , 3))
+        cv2.waitKey(1)
+        cv2.destroyAllWindows()
 
         '''
         plt.figure(figsize=(15, 10))
