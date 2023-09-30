@@ -17,8 +17,8 @@ pygame.mixer.init()
 matching_sound = pygame.mixer.Sound('Real-Time_APP/sounds/supershy.ogg')
 matching_sound.set_volume(0.5)
 
-point_img1 = cv2.imread('Video_APP/img/point_1.png', cv2.IMREAD_GRAYSCALE)
-point_img2 = cv2.imread('Video_APP/img/point_2.png', cv2.IMREAD_GRAYSCALE)
+point_img1 = cv2.imread('Real-Time_APP/img/point_1.png', cv2.IMREAD_GRAYSCALE)
+point_img2 = cv2.imread('Real-Time_APP/img/point_2.png', cv2.IMREAD_GRAYSCALE)
 
 resize_frame_size = 512
 query_img_width = 512
