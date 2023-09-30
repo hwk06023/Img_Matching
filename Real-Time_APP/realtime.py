@@ -17,15 +17,15 @@ pygame.mixer.init()
 matching_sound = pygame.mixer.Sound('Real-Time_APP/sounds/supershy.ogg')
 matching_sound.set_volume(0.5)
 
-point_img1 = cv2.imread('Real-Time_APP/img/point_1.png', cv2.IMREAD_GRAYSCALE)
-point_img2 = cv2.imread('Real-Time_APP/img/point_2.png', cv2.IMREAD_GRAYSCALE)
+point_img1 = cv2.imread('Real-Time_APP/img/man.png', cv2.IMREAD_GRAYSCALE)
+point_img2 = cv2.imread('Real-Time_APP/img/point_3.png', cv2.IMREAD_GRAYSCALE)
 
-resize_frame_size = 512
-query_img_width = 512
+resize_frame_size = 256
+query_img_width = 256
 
 h, w = point_img1.shape
 point_img1 = cv2.resize(point_img1, (query_img_width, query_img_width * h // w))
-max_height = max(512, query_img_width * h // w)
+max_height = max(256, query_img_width * h // w)
 h, w = point_img2.shape
 point_img2 = cv2.resize(point_img2, (query_img_width, query_img_width * h // w))
 max_height = max(max_height, query_img_width * h // w)
@@ -141,17 +141,15 @@ while True:
         h, w = res.shape[:2]
         if (video_size[0]-h) * (video_size[1]-w) != 0:
           res = np.pad(res, [(0, video_size[0]-h), (0, video_size[1]-w)], mode='constant')
-        out.write(np.array(res).reshape(res.shape[0], res.shape[1], 3))
 
-        cv2.imshow(np.array(frame).reshape(frame.shape[0], frame.shape[1] , 3))
+        out_res = np.array(res).reshape(res.shape[0], res.shape[1], 3)
+        out.write(out_res)
+
+        cv2.imshow("Video_Frame", res)
         cv2.waitKey(1)
         cv2.destroyAllWindows()
 
-        '''
-        plt.figure(figsize=(15, 10))
-        plt.imshow(res)
-        plt.axis('off')
-        plt.show() '''
+        
 
 out.release()
 cv2.VideoCapture.release()
