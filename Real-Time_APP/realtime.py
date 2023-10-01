@@ -20,12 +20,12 @@ matching_sound.set_volume(0.5)
 point_img1 = cv2.imread('Real-Time_APP/img/man.png', cv2.IMREAD_GRAYSCALE)
 point_img2 = cv2.imread('Real-Time_APP/img/point_3.png', cv2.IMREAD_GRAYSCALE)
 
-resize_frame_size = 256
-query_img_width = 256
+resize_frame_size = 512
+query_img_width = 512
 
 h, w = point_img1.shape
 point_img1 = cv2.resize(point_img1, (query_img_width, query_img_width * h // w))
-max_height = max(256, query_img_width * h // w)
+max_height = max(512, query_img_width * h // w)
 h, w = point_img2.shape
 point_img2 = cv2.resize(point_img2, (query_img_width, query_img_width * h // w))
 max_height = max(max_height, query_img_width * h // w)
@@ -105,7 +105,7 @@ while True:
         print('-- good matches --')
         print('total matches :', len(matches1))
 
-        # 4 -> point_num
+        # point_num
         for i in range(2):
             print(i,'- matches :',len(good_matches[i]))
         for i in range(2):

@@ -7,7 +7,37 @@ Images that are part of an image may have been rotated, moved, or changed in bri
 It presents a variety of methodologies for this <br/>
 The final goal is process on real-time & Incremental the image to recognize <br/>
 
-I record various attempts in this repo <br/><br/><br/><br/>
+I record various attempts in this repo <br/><br/>
+
+# Outline
+
+- [Img_Recognition](#img-recognition)
+  * [Matching Template - opencv](#matching-template---opencv)
+  
+  * [Feature Detection & Matching - opencv](#feature-detection---matching---opencv)
+
+  * [Homography (A part of Feature Matching)](#homography--a-part-of-feature-matching-)
+    + [How can I detect ?](#how-can-i-detect--)
+    + [Result](#result)
+    + [ETC ..](#etc-)
+  * [One shot learning](#one-shot-learning)
+    + [CLIPSeg](#clipseg)
+- #### [In Videos](#in-videos)
+  * [Program Scenarios](#program-scenarios)
+  * [Test Result](#test-result)
+    + [Case 1 : Between Hanyang Univ & Wangsimni Station](#case-1---between-hanyang-univ---wangsimni-station)
+    + [Case 2 : (Updating) ](#case-2-(Updating))
+  * [Supplementation](#supplementation)
+
+- #### [In Real-Time](#in-real-time)
+  * [Program Scenarios](#program-scenarios-1)
+  * [Test Result](#test-result-1)
+    + [Case 1 : (Updating)](#case-1-(Updating))
+- [Optional processing](#optional-processing)
+  * [Augmetation + Few shot learning](#augmetation---few-shot-learning)
+  * [+ Continual learning](#--continual-learning)
+
+<br/><br/>
 
 ## Matching Template - opencv
 
@@ -22,7 +52,7 @@ In Smart_Camera(Navigation) project [ Easy case ],
 
 In this case, performance is very nice. <br/>
 But, size or rotational transformations (hard cases) do not work well, and slow. <br/>
-So, I can't use it <br/><br/><br/><br/>
+So, I can't use it <br/><br/>
 
 
 <br/>
@@ -36,8 +66,6 @@ If features are simple, use FAST, BRISK .. <br/>
 else(complex), use SIFT, SURF, AKAZE .. <br/>
 
 Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
-
-![fea_detmat](readme/Fea_DetectMat.png)
 
 In Smart_Camera(Navigation) project [ Easy case ],
 
@@ -58,7 +86,8 @@ So, I'm doing middle processing to boolean the result from feature detection & m
 
 I think if i use this one, my app work robustly. <br/>
 
-![wiki_homogr.png](readme/wiki_homogr.png) <br/>
+<img src = "readme/wiki_homogr.png" width = "400" height = "300">
+<br/>
 
 As far as, I know homography works for planar objects <br/>
 So, I use before, detect planar objects() .. in small image 
@@ -75,38 +104,40 @@ So.. If I get detected shop_sign image, I could see the good performance by usin
 
 #### 1. shop_sign - 1 (True data)
 
-Ratio = 0.6, Good matches:122/53093
+Ratio = 0.6, Good matches:122/53093 <br/>
 ![ratio_0.6](readme/ratio_0.6.png)
 
-Ratio = 0.5, Good matches:20/53093
+Ratio = 0.5, Good matches:20/53093 <br/>
 ![ratio_0.5](readme/ratio_0.5.png)
 
 <br/>
 
 #### 2. shop_sign - 2 (True data)
 
-Ratio = 0.6, good matches:67/53093
+Ratio = 0.6, good matches:67/53093 <br/>
 ![ratio2_0.6](readme/ratio2_0.6.png)
 
-Ratio = 0.5, Good matches:20/53093
+Ratio = 0.5, Good matches:20/53093 <br/>
 ![ratio2_0.5](readme/ratio2_0.5.png)
 
 <br/>
 
 #### 3. Iris (False data)
 
-Ratio = 0.6, good matches:13/53093
+Ratio = 0.6, good matches:13/53093 <br/>
 ![ratio2_0.6](readme/Iris_0.6.png)
 
-Ratio = 0.5, Good matches:0/53093
+Ratio = 0.5, Good matches:0/53093 <br/>
 ![ratio2_0.5](readme/Iris_0.5.png)
 
 <br/>
 
 Check [Homography.py](Homography.py) <br/><br/>
 
-Based on the above figures, the matching results were good when ratio = 0.5. <br/>
+Based on the above figures, <br/>
+the matching results were good when ratio = 0.5 and good matches > 5 <br/>
 
+<br/>
 
 ### ETC ..
 
@@ -161,19 +192,18 @@ But, On the one-shot learning, The two pictures are about me with different back
 
 Um .. I think because my skin color is similar to the background color. <br/>
 
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
 ***
 
 # In Videos
 
 
-## Program Scenarios (Feature Matching)
+## Program Scenarios 
 
 Based on the above contents, I would like to write it as a program <br/>
 
-![scenarios](readme/pipeline_hand.png)
-
+<img src="readme/pipeline_hand.png" width="300" height="400">
 
 ### In the image above, Recorrection
 
@@ -187,7 +217,8 @@ In Step 2 : Detected Image doesn't detected in small image, -> Detected by big i
 
 #### Points
 
-![points](readme/readme_points.png)
+<img src="readme/readme_points.png" width="400" height="400">
+
 
 #### Test_Video
 
@@ -201,6 +232,10 @@ Only used two points temporarily.
 ![In_terminal](readme/test_result_terminal.gif)
 
 <br/><br/>
+
+### Case 2 : (Updating)
+ 
+<br/><br/><br/>
 
 ## Supplementation
 
@@ -219,14 +254,23 @@ When points are a lot, Maybe This app doesn't work well enough on real-time. <br
 I want to test with various processing techniques as well as CLIPSeg. (I want to see a change in performancd according to preprocessing) <br/>
 
 
-<br/><br/>
+<br/><br/><br/>
 
 ***
 
 # In Real-Time
 
+## Program Scenarios 
+
+<img src="readme/rt_scenario.png" width="300" height="400">
+
 ## Test Result
 
+### Case 1 : (Updating)
+
+#### Points
+
+#### In terminal
 
 <br/><br/>
 
