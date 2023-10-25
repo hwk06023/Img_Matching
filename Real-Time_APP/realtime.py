@@ -10,14 +10,16 @@ import winsound as sd
 def beepsound():
     fr = 2000    # range : 37 ~ 32767
     du = 1000     # 1000 ms == 1 second
-    sd.Beep(fr, du) # winsound.Beep(frequency, duration)'''
+    sd.Beep(fr, du) # winsound.Beep(frequency, duration)
+    
+'''
 
 pygame.mixer.pre_init(44100,-16,2,512)
 pygame.mixer.init()
 matching_sound = pygame.mixer.Sound('Real-Time_APP/sounds/supershy.ogg')
 matching_sound.set_volume(0.5)
 
-point_img1 = cv2.imread('Real-Time_APP/img/man.png', cv2.IMREAD_GRAYSCALE)
+point_img1 = cv2.imread('Real-Time_APP/img/point_1.png', cv2.IMREAD_GRAYSCALE)
 point_img2 = cv2.imread('Real-Time_APP/img/point_3.png', cv2.IMREAD_GRAYSCALE)
 
 resize_frame_size = 512
@@ -68,12 +70,12 @@ while True:
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     frame = cv2.resize(frame, (resize_frame_size, resize_frame_size))
 
-    kp, des = detector.detectAndCompute(frame, None)
-    kp1, des1 = detector.detectAndCompute(point_img1, None)
+    kp, des = detector.detectAndCompute(frame, None) # kp des
+    kp1, des1 = detector.detectAndCompute(point_img1, None) 
     kp2, des2 = detector.detectAndCompute(point_img2, None)
 
     bf = cv2.BFMatcher()
-    matches1 = bf.knnMatch(des, des1, k=2)
+    matches1 = bf.knnMatch(des, des1, k=2) # k
     matches2 = bf.knnMatch(des, des2, k=2)
 
     good_matches = []
@@ -108,20 +110,20 @@ while True:
         # point_num
         for i in range(2):
             print(i,'- matches :',len(good_matches[i]))
-        for i in range(2):
+
             if len(good_matches[i]) > 5:
                 if i == 0:
                     kp_point = kp1
                     matches_point = matches1
                     good_matches_point = good_matches[0]
                     point = point_img1
-                elif i == 1 and len(good_matches[1]) > len(good_matches[0]):
+                elif i == 1:
                     kp_point = kp2
                     matches_point = matches2
                     good_matches_point = good_matches[1]
                     point = point_img2
 
-                src_pts = np.float32([ kp[m.queryIdx].pt for m in good_matches[i] ])
+                src_pts = np.float32([ kp[m.queryIdx].pt for m in good_matches[i] ]) # queryIdx, trainIdx 
                 dst_pts = np.float32([ kp_point[m.trainIdx].pt for m in good_matches[i] ])
 
                 break
@@ -138,6 +140,8 @@ while True:
         res = cv2.drawMatches(frame, kp, point, kp_point, good_matches_point, None, \
                             flags=cv2.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS)
         
+        maching_frames.append(res)
+        
         h, w = res.shape[:2]
         if (video_size[0]-h) * (video_size[1]-w) != 0:
           res = np.pad(res, [(0, video_size[0]-h), (0, video_size[1]-w)], mode='constant')
@@ -146,10 +150,7 @@ while True:
         out.write(out_res)
 
         cv2.imshow("Video_Frame", res)
-        cv2.waitKey(1)
         cv2.destroyAllWindows()
-
-        
 
 out.release()
 cv2.VideoCapture.release()

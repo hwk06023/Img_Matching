@@ -60,10 +60,48 @@ So, I can't use it <br/><br/>
 ## Feature Detection & Matching - opencv
 
 Use SIFT, SURF, ORB, FAST, BRISK, AKAZE .. <br/>
-[Comparative analysis](https://ieeexplore.ieee.org/document/8346440)
+[Comparative analysis paper](https://ieeexplore.ieee.org/document/8346440)
 
 If features are simple, use FAST, BRISK .. <br/>
 else(complex), use SIFT, SURF, AKAZE .. <br/>
+
+This project's cases are complex. So I use SIFT. <br/><br/>
+
+### SIFT
+
+[Paper](https://www.cs.ubc.ca/~lowe/papers/ijcv04.pdf)
+
+
+1. **Scale-space extrema detection**: The first stage of computation searches over all scales and image locations. It is implemented efficiently by using a difference-of-Gaussian function to identify potential interest points that are invariant to scale and orientation.
+
+2. **Keypoint localization**: At each candidate location, a detailed model is fit to determine location and scale. Keypoints are selected based on measures of their stability.
+
+3. **Orientation assignment**: One or more orientations are assigned to each keypoint lo- cation based on local image gradient directions. All future operations are performed on image data that has been transformed relative to the assigned orientation, scale, and location for each feature, thereby providing invariance to these transformations.
+
+4. **Keypoint descriptor**: The local image gradients are measured at the selected scale in the region around each keypoint. These are transformed into a representation that allows for significant levels of local shape distortion and change in illumination.
+
+<br/>
+
+In paper, The major stages of computation used to generate the set of image features are followed above step.
+
+<br/>
+
+#### Scale-space extrema detection
+
+
+
+#### Keypoint localization
+
+
+#### Orientation assignment 
+
+
+#### Keypoint descriptor
+
+
+
+
+
 
 Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
 
