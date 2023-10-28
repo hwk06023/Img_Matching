@@ -12,27 +12,21 @@ I record various attempts in this repo <br/><br/>
 # Outline
 
 - [Img_Recognition](#img-recognition)
+  * [Abstract](#abstract)
   * [Matching Template - opencv](#matching-template---opencv)
-  
-  * [Feature Detection & Matching - opencv](#feature-detection---matching---opencv)
-
+  * [Feature-point Detection & Matching - opencv](#feature-point-detection---matching---opencv)
   * [Homography (A part of Feature Matching)](#homography--a-part-of-feature-matching-)
-    + [How can I detect ?](#how-can-i-detect--)
-    + [Result](#result)
-    + [ETC ..](#etc-)
   * [One shot learning](#one-shot-learning)
-    + [CLIPSeg](#clipseg)
-- #### [In Videos](#in-videos)
+- [In Videos](#in-videos)
   * [Program Scenarios](#program-scenarios)
   * [Test Result](#test-result)
     + [Case 1 : Between Hanyang Univ & Wangsimni Station](#case-1---between-hanyang-univ---wangsimni-station)
-    + [Case 2 : (Updating) ](#case-2-(Updating))
+    + [Case 2 : (Updating)](#case-2----updating-)
   * [Supplementation](#supplementation)
-
-- #### [In Real-Time](#in-real-time)
+- [In Real-Time](#in-real-time)
   * [Program Scenarios](#program-scenarios-1)
   * [Test Result](#test-result-1)
-    + [Case 1 : (Updating)](#case-1-(Updating))
+    + [Case 1 : (Updating)](#case-1----updating-)
 - [Optional processing](#optional-processing)
   * [Augmetation + Few shot learning](#augmetation---few-shot-learning)
   * [+ Continual learning](#--continual-learning)
@@ -57,12 +51,12 @@ So, I can't use it <br/><br/>
 
 <br/>
 
-## Feature Detection & Matching - opencv
+## Feature-point Detection & Matching - opencv
 
 Use SIFT, SURF, ORB, FAST, BRISK, AKAZE .. <br/>
 [Comparative analysis paper](https://ieeexplore.ieee.org/document/8346440)
 
-If features are simple, use FAST, BRISK .. <br/>
+If feature-points are simple, use FAST, BRISK .. <br/>
 else(complex), use SIFT, SURF, AKAZE .. <br/>
 
 This project's cases are complex. So I use SIFT. <br/><br/>
@@ -82,22 +76,9 @@ This project's cases are complex. So I use SIFT. <br/><br/>
 
 <br/>
 
-In paper, The major stages of computation used to generate the set of image features are followed above step.
+If you want more detailed information, check [This docs](https://github.com/hwk06023/Basic_CV#feature-pointkeypoints-detect-and-match) 
 
 <br/>
-
-#### Scale-space extrema detection
-
-
-
-#### Keypoint localization
-
-
-#### Orientation assignment 
-
-
-#### Keypoint descriptor
-
 
 
 
@@ -358,10 +339,7 @@ Continual learning is required because the task to be processed is constantly up
 
 Based [this Repo](https://github.com/hwk06023/Continual-Learning) <br/>
 
-So, { n-way, n+1-way, n+2-way, ... }
-
-
-#### reference
+#### Reference
 https://en.wikipedia.org/wiki/Homography  <br/>
 https://ieeexplore.ieee.org/document/8346440  <br/>
 https://arxiv.org/pdf/2103.00020.pdf  <br/>
