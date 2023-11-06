@@ -1,20 +1,24 @@
 import cv2
 import numpy as np
 
-img1 = cv2.imread('img/navi2_img.png')
-img2 = cv2.imread('img/Iris.png')
-gray1 = cv2.cvtColor(img1, cv2.IMREAD_GRAYSCALE)
-gray2 = cv2.cvtColor(img2, cv2.IMREAD_GRAYSCALE)
+img1 = cv2.imread('Video_APP/img/navi.png')
+img2 = cv2.imread('Video_APP/img/point_1.png')
+
+img1 = cv2.cvtColor(img1, cv2.IMREAD_GRAYSCALE)
+img2 = cv2.cvtColor(img2, cv2.IMREAD_GRAYSCALE)
+
+img1 = cv2.resize(img1, (1024, 1024))
+img2 = cv2.resize(img2, (1024, 1024))
 
 detector = cv2.SIFT_create()
 
-kp1, desc1 = detector.detectAndCompute(gray1, None)
-kp2, desc2 = detector.detectAndCompute(gray2, None)
+kp1, desc1 = detector.detectAndCompute(img1, None)
+kp2, desc2 = detector.detectAndCompute(img2, None)
 
 matcher = cv2.BFMatcher(cv2.NORM_L1, crossCheck=False)
 matches = matcher.knnMatch(desc1, desc2, 2)
 
-ratio = 0.6
+ratio = 0.5
 good_matches = [first for first,second in matches \
                     if first.distance < second.distance * ratio]
 print('good matches:%d/%d' %(len(good_matches),len(matches)))
