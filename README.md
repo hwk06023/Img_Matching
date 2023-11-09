@@ -80,9 +80,25 @@ If you want more detailed information, check [This docs](https://github.com/hwk0
 
 <br/>
 
+In code, 
 
+```python
+sift = cv2.xfeatures2d.SIFT_create()
+kp, des = sift.detectAndCompute(img1, None)
+```
 
+kp: keypoints, < cv2.KeyPoint 0x10d4137b0 > <br/>
+des: descriptors, < numpy.ndarray > <br/>
 
+```python
+matches = bf.match(des1, des2)
+```
+
+matches: < cv2.DMatch 0x10d4137b0 > 
+
+<br/><br/>
+
+### Result
 
 Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
 
