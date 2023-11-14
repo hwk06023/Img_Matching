@@ -14,7 +14,7 @@ detector = cv2.SIFT_create()
 
 kp1, desc1 = detector.detectAndCompute(img1, None)
 kp2, desc2 = detector.detectAndCompute(img2, None)
-print('kp :', list(kp1[0]))
+print('kp :', kp1[0])
 print('desc :', desc1[0])
 
 matcher = cv2.BFMatcher(cv2.NORM_L1, crossCheck=False)

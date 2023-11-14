@@ -1,13 +1,17 @@
 # Img_Recognition
 
-## Abstract
+## Abstract 
 
 Recognize the image from the image to determine if it exists. <br/>
-Images that are part of an image may have been rotated, moved, or changed in brightness  <br/>
-It presents a variety of methodologies for this <br/>
-The final goal is process on real-time & Incremental the image to recognize <br/>
+Images that are part of an image may have been rotated, moved, or changed in brightness.  <br/>
+It presents a variety of methodologies for this. <br/>
+The final goal is process on real-time & Incremental the image to recognize. <br/>
 
-I record various attempts in this repo <br/><br/>
+I record various attempts in this repo .<br/><br/>
+
+**Check [Basic_CV repo](https://github.com/hwk06023/Basic_cv) for a detailed Theory.** 
+
+<br/>
 
 # Outline
 
@@ -45,7 +49,7 @@ In Smart_Camera(Navigation) project [ Easy case ],
 
 
 In this case, performance is very nice. <br/>
-But, size or rotational transformations (hard cases) do not work well, and slow. <br/>
+But, size or rotational transformations (hard cases) do not work well. <br/>
 So, I can't use it <br/><br/>
 
 
@@ -88,7 +92,7 @@ kp, des = sift.detectAndCompute(img1, None)
 ```
 
 kp: keypoints, < cv2.KeyPoint 0x10d4137b0 > <br/>
-des: descriptors, < numpy.ndarray > <br/>
+des: descriptors, ndarray [[n, n, n, .. n], [n, n, n, .. n], [n, n, n, .. n] ..]  <br/>
 
 ```python
 matches = bf.match(des1, des2)
@@ -174,13 +178,7 @@ the matching results were good when ratio = 0.5 and good matches > 5 <br/>
 
 <br/>
 
-### ETC ..
-
-#### solvePnP
-
-solvePnP is
-
-#### BFmatching
+### BFmatching
 
 BFmatching is BruteForce matching. <br/>
 I get the boolean result by using BFmatching <br/>
@@ -330,7 +328,7 @@ I make use of [paperwithcode's git](https://paperswithcode.com/paper/prototypica
 
 Flipping, Gray scale, Brightness, Rotation ..
 
-Based [this Repo](https://github.com/hwk06023/Augmentation)
+Based [this Repo](https://github.com/hwk06023/Basic_cv)
 
 
 ### Prototypical Network
