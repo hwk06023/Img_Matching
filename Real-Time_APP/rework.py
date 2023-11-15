@@ -22,7 +22,7 @@ class GUI(QtWidgets.QWidget):
         self.detector = cv2.SIFT_create()  # SIFT detector for computing keypoints and descriptors
         self.resize_imsize = (512, 512)  # Image resize size for computation reduction when using SIFT
 
-        self.folder_path = r"./captured_data"  # Save folder path for captured images and descriptors
+        self.folder_path = r"./Real-Time_APP/captured_data"  # Save folder path for captured images and descriptors
         # If the folder does not exist, create it
         if not os.path.exists(self.folder_path):
             os.makedirs(self.folder_path)

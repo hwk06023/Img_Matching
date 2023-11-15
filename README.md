@@ -260,7 +260,7 @@ Only used two points temporarily.
 ![result_video](readme/demo_videos.gif)
 
 
-#### In terminal
+#### In terminal (1024 x 1024 slow version)
 
 ![In_terminal](readme/test_result_terminal.gif)
 
@@ -291,7 +291,11 @@ I want to test with various processing techniques as well as CLIPSeg. (I want to
 
 ***
 
-# In Real-Time
+# In Real-Time GUI Tool
+
+## Interface
+
+<img src="readme/gui.png" width="300" >
 
 ## Program Scenarios 
 
