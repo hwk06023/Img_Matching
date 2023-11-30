@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+import eng_to_ipa as ipa
+
 import threading
 import sys
 import os
@@ -20,9 +22,12 @@ class GUI(QtWidgets.QWidget):
         self.isLoad = False
         
         # lists for captured images, keypoints, descriptions that computed with SIFT
-        self.point_img_lst = list()
+        #self.point_img_lst = list()
         self.kp_lst = list()
         self.des_lst = list()
+        
+        self.image_name_lst = list()
+        self.image_name_ipa_lst = list()
         
         self.detector = cv2.SIFT_create() # SIFT detector for compute keypoints and descriptions
         self.resize_imsize = (512, 512) # image resize size for computation reduction when compute SIFT
@@ -46,11 +51,16 @@ class GUI(QtWidgets.QWidget):
         self.btn_capture = QtWidgets.QPushButton("Capture", self)
         self.btn_load = QtWidgets.QPushButton("Load", self)
         
+        self.capture_line_edit = QtWidgets.QLineEdit(self)
+        self.load_line_edit = QtWidgets.QLineEdit(self)
+        
         # widgets that will be displayed
         vbox.addWidget(self.label) # for camera display
         vbox.addWidget(self.btn_start)
         vbox.addWidget(self.btn_stop)
+        vbox.addWidget(self.capture_line_edit)
         vbox.addWidget(self.btn_capture)
+        vbox.addWidget(self.load_line_edit)
         vbox.addWidget(self.btn_load)
         self.setLayout(vbox)
         
@@ -76,15 +86,44 @@ class GUI(QtWidgets.QWidget):
                 
                 # when capture is clicked, it will execute
                 if self.isCapture:
-                    self.capture(img, self.capture_id)
+                    image_name = self.capture_line_edit.text()
+                    for image_name in self.image_name_lst:
+                        print("The name that you enter is already exist. Try another name.")
+                        image_name = self.capture_line_edit.text()
+                    self.capture_line_edit.setText("")
+                        
+                    self.image_name_lst.append(image_name)
+                    self.image_name_ipa_lst.append(ipa.convert(image_name))
+                    
+                    #self.capture(img, self.capture_id)
+                    self.capture(img, image_name)
                     print("Screen is captured\n")
                
-                    self.capture_id += 1 # incread id
+                    #self.capture_id += 1 # incread id
                     self.isCapture = False # turn off the flag
                 
                 if self.isLoad:
-                    self.load(self.folder_path)
-                    print(f"{len(self.kp_lst), len(self.kp_lst), len(self.kp_lst)} features are loaded")
+                    flag = 1
+                    
+                    features_paths = glob(f"{self.folder_path}/*.json")
+                    features_fnames = [f"{os.path.basename(features_path)}"[:-5] for features_path in features_paths]
+                    print(features_fnames)
+                    if self.load_line_edit.text() != "$ALL":
+                        input_features_fnames = self.load_line_edit.text().split(' ')
+                        print(input_features_fnames)
+                        
+                        if not all(element in features_fnames for element in input_features_fnames):
+                            flag = 0
+                        else:
+                            features_paths = [f"{self.folder_path}/{features_fname}.json" for features_fname in input_features_fnames]
+                    
+                    if flag:
+                        self.load(features_paths)
+                        print(f"{[os.path.basename(features_path) for features_path in features_paths]} features are loaded")
+                    else:
+                        print(f"Some files in your input do not exist. No features are loaded")
+                    
+                    
                     self.isLoad = False
                     
                 self.label.setPixmap(pixmap)
@@ -107,9 +146,12 @@ class GUI(QtWidgets.QWidget):
         self.running = False
         
         # initialize capture list
-        self.point_img_lst = list()
+        #self.point_img_lst = list()
         self.kp_lst = list()
         self.des_lst = list()
+        
+        self.image_name_lst = list()
+        self.image_name_ipa_lst = list()
         
         print("stoped..")
     
@@ -120,15 +162,14 @@ class GUI(QtWidgets.QWidget):
         print("started..")
     
     def capture(self, image, image_name):
-        image_name = str(image_name).zfill(8) # change int id to 8 string with 0 padding
-        
+        #image_name = str(image_name).zfill(8) # change int id to 8 string with 0 padding
         image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
         resized_image = cv2.resize(image, self.resize_imsize) # resize image for computation reduction
 
         kp, des = self.detector.detectAndCompute(resized_image, None)
         
         # append images and kp and des to list when capture
-        self.point_img_lst.append(resized_image)
+        #self.point_img_lst.append(resized_image)
         self.kp_lst.append(kp)
         self.des_lst.append(des)
         
@@ -162,24 +203,21 @@ class GUI(QtWidgets.QWidget):
 
         return keypoints, descriptors
     
-    def load(self, folder_path):
-        features_paths = glob(f"{folder_path}/*.json")
-        
+    def load(self, features_paths):
         for features_path in features_paths:
-            image_path = f"{folder_path}/{os.path.basename(features_path).split('.')[0]+'.jpg'}"
-            image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
-            resized_image = cv2.resize(image, self.resize_imsize) # resize image for computation reduction
+            #image_path = f"{self.folder_path}/{os.path.basename(features_path).split('.')[0]+'.jpg'}"
+            #image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+            #resized_image = cv2.resize(image, self.resize_imsize) # resize image for computation reduction
             
             keypoints, descriptors = self.load_keypoints_and_descriptors(features_path)
             
-            self.point_img_lst.append(resized_image)
+            #self.point_img_lst.append(resized_image)
             self.kp_lst.append(keypoints)
             self.des_lst.append(descriptors)
     
     def onExit(self):
         print("exit")
         self.stopClick()
-        QtWidgets.QApplication.quit()
 
 app = QtWidgets.QApplication([])
 ex = GUI()
