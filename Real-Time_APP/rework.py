@@ -1,8 +1,12 @@
 import cv2
+import numpy as np
+
 import threading
 import sys
 import os
 import json
+from glob import glob
+
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
 from PyQt5 import QtCore
@@ -10,101 +14,129 @@ from PyQt5 import QtCore
 class GUI(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
-
-        self.running = False  # Flag indicating if the camera is on
-        self.isCapture = False  # Flag indicating if capture is active
-
-        # Lists for captured images, keypoints, and descriptors computed with SIFT
+        
+        self.running = False # flag if camera is on
+        self.isCapture = False # flag if capture is on
+        self.isLoad = False
+        
+        # lists for captured images, keypoints, descriptions that computed with SIFT
         self.point_img_lst = list()
         self.kp_lst = list()
         self.des_lst = list()
-
-        self.detector = cv2.SIFT_create()  # SIFT detector for computing keypoints and descriptors
-        self.resize_imsize = (512, 512)  # Image resize size for computation reduction when using SIFT
-
-        self.folder_path = r"./Real-Time_APP/captured_data"  # Save folder path for captured images and descriptors
-        # If the folder does not exist, create it
+        
+        self.detector = cv2.SIFT_create() # SIFT detector for compute keypoints and descriptions
+        self.resize_imsize = (512, 512) # image resize size for computation reduction when compute SIFT
+        
+        self.folder_path = r"./captured_data" # save folder path for captured images and descriptions
+        # if folder does not exist, create folder
         if not os.path.exists(self.folder_path):
             os.makedirs(self.folder_path)
             print(f"Folder '{self.folder_path}' created.")
-
-        self.capture_id = 0  # ID of saved jpg and json files
-
+            
+        self.capture_id = 0 # id of saved jpg and json
+        
         # UI initialization of PyQt5
         self.initUI()
-
+    
     def initUI(self):
         vbox = QtWidgets.QVBoxLayout()
         self.label = QtWidgets.QLabel(self)
         self.btn_start = QtWidgets.QPushButton("Camera On", self)
         self.btn_stop = QtWidgets.QPushButton("Camera Off", self)
         self.btn_capture = QtWidgets.QPushButton("Capture", self)
-
-        # Widgets that will be displayed
-        vbox.addWidget(self.label)  # For displaying the camera feed
+        self.btn_load = QtWidgets.QPushButton("Load", self)
+        
+        # widgets that will be displayed
+        vbox.addWidget(self.label) # for camera display
         vbox.addWidget(self.btn_start)
         vbox.addWidget(self.btn_stop)
         vbox.addWidget(self.btn_capture)
+        vbox.addWidget(self.btn_load)
         self.setLayout(vbox)
-
-        # Link buttons with functions
+        
+        # link button with functions
         self.btn_start.clicked.connect(self.startClick)
         self.btn_stop.clicked.connect(self.stopClick)
         self.btn_capture.clicked.connect(self.captureClick)
-
+        self.btn_load.clicked.connect(self.loadClick)
+    
     def run(self):
-        cap = cv2.VideoCapture(0)  # 0 means the default camera
+        cap = cv2.VideoCapture(0) # 0 means camera
         width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
         height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
-        self.label.resize(int(width), int(height))  # Resize label to match the camera image size
+        self.label.resize(int(width), int(height)) # label to camera image size
 
         while self.running:
             ret, img = cap.read()
             if ret:
-                img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-                h, w, c = img.shape
-                qImg = QtGui.QImage(img.data, w, h, w * c, QtGui.QImage.Format_RGB888)
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 
+                h,w,c = img.shape
+                qImg = QtGui.QImage(img.data, w, h, w*c, QtGui.QImage.Format_RGB888)
                 pixmap = QtGui.QPixmap.fromImage(qImg)
-
-                # When capture is clicked, it will execute
+                
+                # when capture is clicked, it will execute
                 if self.isCapture:
                     self.capture(img, self.capture_id)
                     print("Screen is captured\n")
-
-                    self.capture_id += 1  # Increase the ID
-                    self.isCapture = False  # Turn off the flag
-
+               
+                    self.capture_id += 1 # incread id
+                    self.isCapture = False # turn off the flag
+                
+                if self.isLoad:
+                    self.load(self.folder_path)
+                    print(f"{len(self.kp_lst), len(self.kp_lst), len(self.kp_lst)} features are loaded")
+                    self.isLoad = False
+                    
                 self.label.setPixmap(pixmap)
-            # This means reading the image was not successful
+            # this means reading image is not successful
             else:
                 QtWidgets.QMessageBox.about(self, "Error", "Cannot read frame.")
-                print("Cannot read frame.")
+                print("cannot read frame.")
                 break
 
         cap.release()
         print("Thread end.")
-
+    
     def captureClick(self):
         self.isCapture = True
-
+        
+    def loadClick(self):
+        self.isLoad = True
+    
+    def stopClick(self):
+        self.running = False
+        
+        # initialize capture list
+        self.point_img_lst = list()
+        self.kp_lst = list()
+        self.des_lst = list()
+        
+        print("stoped..")
+    
+    def startClick(self):
+        self.running = True
+        th = threading.Thread(target=self.run)
+        th.start()
+        print("started..")
+    
     def capture(self, image, image_name):
-        image_name = str(image_name).zfill(8)  # Change the integer ID to an 8-character string with 0 padding
-
+        image_name = str(image_name).zfill(8) # change int id to 8 string with 0 padding
+        
         image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-        resized_image = cv2.resize(image, self.resize_imsize)  # Resize image for computation reduction
+        resized_image = cv2.resize(image, self.resize_imsize) # resize image for computation reduction
 
         kp, des = self.detector.detectAndCompute(resized_image, None)
-
-        # Append images and keypoints and descriptors to lists when capturing
+        
+        # append images and kp and des to list when capture
         self.point_img_lst.append(resized_image)
         self.kp_lst.append(kp)
         self.des_lst.append(des)
-
-        # Save image
+        
+        # save image
         image_path = os.path.join(self.folder_path, image_name + ".jpg")
         cv2.imwrite(image_path, image)
-
-        # Save keypoints and descriptors as JSON
+        
+        # save kp, des as json
         features_path = os.path.join(self.folder_path, image_name + ".json")
         features_data = {
             "keypoints": [
@@ -117,26 +149,37 @@ class GUI(QtWidgets.QWidget):
 
         with open(features_path, 'w') as json_file:
             json.dump(features_data, json_file, indent=4)
+    
+    def load_keypoints_and_descriptors(self, features_path):
+        with open(features_path, 'r') as json_file:
+            features_data = json.load(json_file)
 
-    def stopClick(self):
-        self.running = False
+        keypoints = [cv2.KeyPoint(x=pt["pt"][0], y=pt["pt"][1], size=pt["size"], angle=pt["angle"],
+                                  response=pt["response"], octave=pt["octave"], class_id=pt["class_id"])
+                     for pt in features_data["keypoints"]]
 
-        # Initialize capture lists
-        self.point_img_lst = list()
-        self.kp_lst = list()
-        self.des_lst = list()
+        descriptors = np.array(features_data["descriptors"], dtype=np.float32)
 
-        print("Stopped...")
-
-    def startClick(self):
-        self.running = True
-        th = threading.Thread(target=self.run)
-        th.start()
-        print("Started...")
-
+        return keypoints, descriptors
+    
+    def load(self, folder_path):
+        features_paths = glob(f"{folder_path}/*.json")
+        
+        for features_path in features_paths:
+            image_path = f"{folder_path}/{os.path.basename(features_path).split('.')[0]+'.jpg'}"
+            image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+            resized_image = cv2.resize(image, self.resize_imsize) # resize image for computation reduction
+            
+            keypoints, descriptors = self.load_keypoints_and_descriptors(features_path)
+            
+            self.point_img_lst.append(resized_image)
+            self.kp_lst.append(keypoints)
+            self.des_lst.append(descriptors)
+    
     def onExit(self):
-        print("Exit")
+        print("exit")
         self.stopClick()
+        QtWidgets.QApplication.quit()
 
 app = QtWidgets.QApplication([])
 ex = GUI()

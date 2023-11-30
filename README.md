@@ -7,7 +7,7 @@ Images that are part of an image may have been rotated, moved, or changed in bri
 It presents a variety of methodologies for this. <br/>
 The final goal is process on real-time & Incremental the image to recognize. <br/>
 
-I record various attempts in this repo .<br/><br/>
+I record various attempts in this repo . <br/><br/>
 
 **Check [Basic_CV repo](https://github.com/hwk06023/Basic_cv) for a detailed Theory.** 
 
