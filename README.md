@@ -24,8 +24,8 @@ Use opencv's matchTemplate, get loc, normalize .. <br/>
 Check [template_matching.py](https://github.com/hwk06023/Img_Recognition/blob/main/template_matching.py)
 <br/>
 
-In Smart_Camera(Navigation) project [ Easy case ], 
-![template navi](readme/navi_template.png)
+**In Smart_Camera(Navigation) project [ Easy case ]** <br/>
+<img src = "readme/navi_template.png" width = "500"> <br/>
 
 
 In this case, performance is very nice. <br/>
@@ -88,12 +88,12 @@ Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
 
 **In Smart_Camera(Navigation) project [ Easy case ]**
 
-<img src = "readme/navi_feat1.png" width=400> <br/>
-<img src = "readme/navi_feat2.png" width=400> <br/>
+<img src = "readme/navi_feat1.png" width=500> <br/>
+<img src = "readme/navi_feat2.png" width=500> <br/>
 
 **In Smart_Camera(Navigation) project [ Hard case ]**
 
-<img src = "readme/readme_hard_1.png" width=400> <br/>
+<img src = "readme/readme_hard_1.png" width=500> <br/>
 
 This case's performance is not good yet.. <br/><br/>
 
@@ -123,30 +123,30 @@ So.. If I get detected shop_sign image, I could see the good performance by usin
 #### 1. shop_sign - 1 (True data)
 
 Ratio = 0.6, Good matches:122/53093 <br/>
-<img src = "readme/ratio_0.6.png" width = "400">
+<img src = "readme/ratio_0.6.png" width = "500">
 
 Ratio = 0.5, Good matches:20/53093 <br/>
-<img src = "readme/ratio_0.5.png" width = "400">
+<img src = "readme/ratio_0.5.png" width = "500">
 
 <br/>
 
 #### 2. shop_sign - 2 (True data)
 
 Ratio = 0.6, good matches:67/53093 <br/>
-<img src = "readme/ratio2_0.6.png" width = "400">
+<img src = "readme/ratio2_0.6.png" width = "500">
 
 Ratio = 0.5, Good matches:20/53093 <br/>
-<img src = "readme/ratio2_0.5.png" width = "400">
+<img src = "readme/ratio2_0.5.png" width = "500">
 
 <br/>
 
 #### 3. Iris (False data)
 
 Ratio = 0.6, good matches:13/53093 <br/>
-<img src = "readme/Iris_0.6.png" width = "400">
+<img src = "readme/Iris_0.6.png" width = "500">
 
 Ratio = 0.5, Good matches:0/53093 <br/>
-<img src = "readme/Iris_0.5.png" width = "400">
+<img src = "readme/Iris_0.5.png" width = "500">
 
 <br/>
 
@@ -176,7 +176,7 @@ Check [BFmatching.py](BFmatching.py) <br/><br/><br/><br/><br/>
 
 Based on the above contents, I would like to write it as a program <br/>
 
-<img src="readme/pipeline_hand.png" width="300" height="400">
+<img src="readme/pipeline_hand.png" width="400">
 
 
 ## Test Result
@@ -188,8 +188,8 @@ Based on the above contents, I would like to write it as a program <br/>
 
 **Preprocessed** <br/>
 Only used two points temporarily. <br/>
-<img src="Video_APP/img/point1_1.png" width="250">
-<img src="Video_APP/img/point2_1.png" width="70"> <br/>
+<img src="Video_APP/img/point1_1.png" width="313">
+<img src="Video_APP/img/point2_1.png" width="87"> <br/>
 
 ### Test_Img
 
@@ -236,11 +236,13 @@ I want to test with various processing techniques as well as CLIPSeg. (I want to
 
 ### Interface
 
-<img src="readme/gui.png" width="300" >
+<img src="readme/gui.png" width="300"> <br/>
 
 ### Program Scenarios 
 
-<img src="readme/rt_scenario.png" width="300" height="400">
+<img src="readme/rt_scenario.png" width="300" height="400"> <br/>
+
+**So, I completed the program.** <br/>
 
 <br/><br/>
 
