@@ -19,21 +19,7 @@ Flipping, Gray scale, Brightness, Rotation ..
 Based [this Repo](https://github.com/hwk06023/Basic_cv)
 
 
-### Prototypical Network
-
-
-
-
-### Relation Network
-
-
-
-
-
-
-
 <br/><br/><br/>
-
 
 ## + Continual learning
 
