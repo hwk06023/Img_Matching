@@ -98,13 +98,13 @@ class GUI(QtWidgets.QWidget):
                     #self.capture(img, self.capture_id)
                     self.capture(img, image_name)
                     print("Screen is captured\n")
-               
+
                     #self.capture_id += 1 # incread id
                     self.isCapture = False # turn off the flag
                 
                 if self.isLoad:
                     flag = 1
-                    
+
                     features_paths = glob(f"{self.folder_path}/*.json")
                     features_fnames = [f"{os.path.basename(features_path)}"[:-5] for features_path in features_paths]
                     print(features_fnames)
@@ -122,10 +122,9 @@ class GUI(QtWidgets.QWidget):
                         print(f"{[os.path.basename(features_path) for features_path in features_paths]} features are loaded")
                     else:
                         print(f"Some files in your input do not exist. No features are loaded")
-                    
-                    
+
                     self.isLoad = False
-                    
+
                 self.label.setPixmap(pixmap)
             # this means reading image is not successful
             else:
@@ -214,7 +213,7 @@ class GUI(QtWidgets.QWidget):
             #self.point_img_lst.append(resized_image)
             self.kp_lst.append(keypoints)
             self.des_lst.append(descriptors)
-    
+
     def onExit(self):
         print("exit")
         self.stopClick()
@@ -223,4 +222,6 @@ app = QtWidgets.QApplication([])
 ex = GUI()
 app.aboutToQuit.connect(ex.onExit)
 ex.show()
+print(GUI.mro())
 sys.exit(app.exec_())
+

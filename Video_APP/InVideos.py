@@ -12,13 +12,12 @@ point_img2 = cv2.imread('Video_APP/img/point_2.png', cv2.IMREAD_GRAYSCALE)
 # point_img4 = cv2.imread('Video_APP/img/point_4.png', cv2.IMREAD_GRAYSCALE)
 
 # If you want to resize frame size, change this value
-resize_frame_size = 512
-query_img_width = 128
+resize_frame_size = 256
+query_img_width = 256
 
-h, w = point_img1.shape
+h, w = 256, 256
 point_img1 = cv2.resize(point_img1, (query_img_width, query_img_width * h // w))
-max_height = max(512, query_img_width * h // w)
-h, w = point_img2.shape
+max_height = max(256, query_img_width * h // w)
 point_img2 = cv2.resize(point_img2, (query_img_width, query_img_width * h // w))
 max_height = max(max_height, query_img_width * h // w)
 # h, w = point_img3.shape
@@ -58,7 +57,7 @@ while True:
         break
 
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    frame = cv2.resize(frame, (512, 512))
+    frame = cv2.resize(frame, (256, 256))
 
     kp, des = detector.detectAndCompute(frame, None)
     kp1, des1 = detector.detectAndCompute(point_img1, None)
@@ -73,7 +72,7 @@ while True:
     # matches4 = bf.knnMatch(des, des4, k=2) 
 
     good_matches = []
-    ratio = 0.6
+    ratio = 0.5
     good_matches.append(list(first for first,second in matches1 \
                     if first.distance < second.distance * ratio))
     

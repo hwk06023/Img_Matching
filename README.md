@@ -1,4 +1,4 @@
-# Img_Matching
+# Sub_Template_Matching_PreAttempt
 
 ## Abstract 
 
@@ -7,33 +7,13 @@ Images that are part of an image may have been rotated, moved, or changed in bri
 It presents a variety of methodologies for this. <br/>
 The final goal is process on real-time & Incremental the image to recognize. <br/>
 
-I record various attempts in this repo . <br/><br/>
+I record various attempts in this repo . <br/>
 
 **Check [Basic_CV repo](https://github.com/hwk06023/Basic_cv) for a detailed Theory.** 
 
-<br/>
 
-# Outline
+### Outline
 
-- [Img_Recognition](#img-recognition)
-  * [Abstract](#abstract)
-  * [Matching Template - opencv](#matching-template---opencv)
-  * [Feature-point Detection & Matching - opencv](#feature-point-detection---matching---opencv)
-  * [Homography (A part of Feature Matching)](#homography--a-part-of-feature-matching-)
-  * [One shot learning](#one-shot-learning)
-- [In Videos](#in-videos)
-  * [Program Scenarios](#program-scenarios)
-  * [Test Result](#test-result)
-    + [Case 1 : Between Hanyang Univ & Wangsimni Station](#case-1---between-hanyang-univ---wangsimni-station)
-    + [Case 2 : (Updating)](#case-2----updating-)
-  * [Supplementation](#supplementation)
-- [In Real-Time](#in-real-time)
-  * [Program Scenarios](#program-scenarios-1)
-  * [Test Result](#test-result-1)
-    + [Case 1 : (Updating)](#case-1----updating-)
-- [Optional processing](#optional-processing)
-  * [Augmetation + Few shot learning](#augmetation---few-shot-learning)
-  * [+ Continual learning](#--continual-learning)
 
 <br/><br/>
 
@@ -106,15 +86,14 @@ matches: < cv2.DMatch 0x10d4137b0 >
 
 Check [Feature_DetectMatch.py](Feature_DetectMatch.py)
 
-In Smart_Camera(Navigation) project [ Easy case ],
+**In Smart_Camera(Navigation) project [ Easy case ]**
 
-![fe2](readme/navi_feat1.png)
+<img src = "readme/navi_feat1.png" width=400> <br/>
+<img src = "readme/navi_feat2.png" width=400> <br/>
 
-![fe3](readme/navi_feat2.png)
+**In Smart_Camera(Navigation) project [ Hard case ]**
 
-In Smart_Camera(Navigation) project [ Hard case ], 
-
-![f2_1](readme/readme_hard_1.png)
+<img src = "readme/readme_hard_1.png" width=400> <br/>
 
 This case's performance is not good yet.. <br/><br/>
 
@@ -125,7 +104,7 @@ So, I'm doing middle processing to boolean the result from feature detection & m
 
 I think if i use this one, my app work robustly. <br/>
 
-<img src = "readme/wiki_homogr.png" width = "400" height = "300">
+<img src = "readme/wiki_homogr.png" width = "300">
 <br/>
 
 As far as, I know homography works for planar objects <br/>
@@ -135,7 +114,7 @@ So, I use before, detect planar objects() .. in small image
 
 Maybe, I can use Clipseg, which will be shown below
 
-![clipseg_shopsign.png](readme/clipseg_shopsign.png) <br/>
+<img src = "readme/clipseg_shopsign.png" width = "300">
 
 ### Result
 
@@ -144,37 +123,37 @@ So.. If I get detected shop_sign image, I could see the good performance by usin
 #### 1. shop_sign - 1 (True data)
 
 Ratio = 0.6, Good matches:122/53093 <br/>
-![ratio_0.6](readme/ratio_0.6.png)
+<img src = "readme/ratio_0.6.png" width = "400">
 
 Ratio = 0.5, Good matches:20/53093 <br/>
-![ratio_0.5](readme/ratio_0.5.png)
+<img src = "readme/ratio_0.5.png" width = "400">
 
 <br/>
 
 #### 2. shop_sign - 2 (True data)
 
 Ratio = 0.6, good matches:67/53093 <br/>
-![ratio2_0.6](readme/ratio2_0.6.png)
+<img src = "readme/ratio2_0.6.png" width = "400">
 
 Ratio = 0.5, Good matches:20/53093 <br/>
-![ratio2_0.5](readme/ratio2_0.5.png)
+<img src = "readme/ratio2_0.5.png" width = "400">
 
 <br/>
 
 #### 3. Iris (False data)
 
 Ratio = 0.6, good matches:13/53093 <br/>
-![ratio2_0.6](readme/Iris_0.6.png)
+<img src = "readme/Iris_0.6.png" width = "400">
 
 Ratio = 0.5, Good matches:0/53093 <br/>
-![ratio2_0.5](readme/Iris_0.5.png)
+<img src = "readme/Iris_0.5.png" width = "400">
 
 <br/>
 
 Check [Homography.py](Homography.py) <br/><br/>
 
 Based on the above figures, <br/>
-the matching results were good when ratio = 0.5 and good matches > 5 <br/>
+the matching results were good when **ratio = 0.5 and good matches > 5** <br/>
 
 <br/>
 
@@ -190,47 +169,8 @@ I used BFmatching even when I could use FLANN because in our case accuracy is mo
 
 Check [BFmatching.py](BFmatching.py) <br/><br/><br/><br/><br/>
 
-## One shot learning
-
-An attempt to overcome the vulnerability of the real world <br/>
-
-- [Siamese Neural Networks](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf)
-- [CLIPSeg](https://arxiv.org/pdf/2103.00020.pdf)
-
-###  Siamese Neural Networks (Conv)
-
-I use [Huggingface](https://huggingface.co/keras-io/siamese-contrastive), [keras.io](https://keras.io/examples/vision/siamese_contrastive/). <br/>
-
-[Siamese_net](siamese_net.ipynb) <br/>
-
-um.. I miss. useless <br/>
-
-
-### CLIPSeg
-
-I use [Huggingface](https://huggingface.co/blog/clipseg-zero-shot). <br/>
-
-![clipseg](readme/clipseg.png) <br/>
-
-Check [CLIPSeg.ipynb](https://github.com/hwk06023/Img_Recognition/blob/main/CLIPSeg.ipynb) <br/>
-
-zero-shot learning test's result is good. <br/>
-
-![zero-shot](readme/zero-shot.png) <br/>
-
-But, On the one-shot learning, The two pictures are about me with different backgrounds, I want Recognize me, but this processer recognize my clothes .. <br/>
-
-
-![zero-shot](readme/one-shot.png) <br/>
-
-Um .. I think because my skin color is similar to the background color. <br/>
-
-<br/><br/><br/><br/>
-
-***
 
 # In Videos
-
 
 ## Program Scenarios 
 
@@ -238,37 +178,39 @@ Based on the above contents, I would like to write it as a program <br/>
 
 <img src="readme/pipeline_hand.png" width="300" height="400">
 
-### In the image above, Recorrection
-
-In Step 2 : Detected Image doesn't detected in small image, -> Detected by big image(point image)
-
-<br/><br/>
 
 ## Test Result
 
-### Case 1 : Between Hanyang Univ & Wangsimni Station
+### Points
 
-#### Points
+**Original** <br/>
+<img src="readme/readme_points.png" width="400" height="400"> <br/>
 
-<img src="readme/readme_points.png" width="400" height="400">
+**Preprocessed** <br/>
+Only used two points temporarily. <br/>
+<img src="Video_APP/img/point1_1.png" width="250">
+<img src="Video_APP/img/point2_1.png" width="70"> <br/>
+
+### Test_Img
+
+<img src="readme/color_result.png" width="500"> <br/>
+<img src="readme/black_result.png" width="500"> <br/>
 
 
-#### Test_Video
+### Test_Video
 
-Only used two points temporarily.
+<img src="readme/demo_videos.gif" width="500"> <br/>
 
-![result_video](readme/demo_videos.gif)
+### In terminal (Before)
 
+<img src="readme/test_result_terminal.gif" width="500"> <br/>
 
-#### In terminal (1024 x 1024 slow version)
-
-![In_terminal](readme/test_result_terminal.gif)
+### In terminal (After)
+<img src="readme/afterterminal.gif" width="500"> <br/>
 
 <br/><br/>
 
-### Case 2 : (Updating)
- 
-<br/><br/><br/>
+
 
 ## Supplementation
 
@@ -287,75 +229,29 @@ When points are a lot, Maybe This app doesn't work well enough on real-time. <br
 I want to test with various processing techniques as well as CLIPSeg. (I want to see a change in performancd according to preprocessing) <br/>
 
 
-<br/><br/><br/>
+<br/>
 
-***
 
-# In Real-Time GUI Tool
+## In Real-Time GUI Tool
 
-## Interface
+### Interface
 
 <img src="readme/gui.png" width="300" >
 
-## Program Scenarios 
+### Program Scenarios 
 
 <img src="readme/rt_scenario.png" width="300" height="400">
-
-## Test Result
-
-### Case 1 : (Updating)
-
-#### Points
-
-#### In terminal
 
 <br/><br/>
 
 ***
 
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
-# Optional processing
+### An approach from a different perspective
 
-## Augmetation + Few shot learning
-
-An attempt to improve performance in one-shot learning <br/>
-I make use of [paperwithcode's git](https://paperswithcode.com/paper/prototypical-networks-for-few-shot-learning)
-
-#### An attempt (Update)
-- Metric based learning - [Prototypical Network](https://proceedings.neurips.cc/paper_files/paper/2017/file/cb8da6767461f2812ae4290eac7cbc42-Paper.pdf), Relation Network, .. <br/>
-- Model based learning - .. <br/>
-- Optimizer learning - .. <br/>
-<br/>
-
-### Augemtation
-
-Flipping, Gray scale, Brightness, Rotation ..
-
-Based [this Repo](https://github.com/hwk06023/Basic_cv)
-
-
-### Prototypical Network
-
-
-
-
-### Relation Network
-
-
-
-
-
-
-
-<br/><br/><br/>
-
-
-## + Continual learning
-
-Continual learning is required because the task to be processed is constantly updated. <br/>
-
-Based [this Repo](https://github.com/hwk06023/Continual-Learning) <br/>
+Check [Optional_processing.md](Optional_processing.md) <br/>
+Check [One_shot_learning.md](One_shot_learning.md) <br/> <br/>
 
 #### Reference
 https://en.wikipedia.org/wiki/Homography  <br/>
