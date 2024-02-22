@@ -14,6 +14,26 @@ I record various attempts in this repo . <br/>
 
 ### Outline
 
+* [Matching Template - opencv](#matching-template---opencv)
+* [Feature-point Detection & Matching - opencv](#feature-point-detection---matching---opencv)
+    + [SIFT](#sift)
+    + [Result](#result)
+* [Homography (A part of Feature Matching)](#homography--a-part-of-feature-matching-)
+    + [Result](#result-1)
+    + [BFmatching](#bfmatching)
+- [In Videos](#in-videos)
+  * [Program Scenarios](#program-scenarios)
+  * [Test Result](#test-result)
+* [Supplementation](#supplementation)
+    + [Applied](#applied)
+    + [Not yet](#not-yet)
+* [In Real-Time GUI Tool](#in-real-time-gui-tool)
+    + [Interface](#interface)
+    + [Program Scenarios](#program-scenarios-1)
+    + [An approach from a different perspective](#an-approach-from-a-different-perspective)
+- [Reference](#reference)
+
+
 
 <br/><br/>
 
